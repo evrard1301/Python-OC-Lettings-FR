@@ -12,6 +12,7 @@ jobs:
           name: Build docker image
           command: |
             apk add docker
+            ls
             docker build . -t bog13/lettings
   test:
     docker:
