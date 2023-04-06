@@ -38,8 +38,7 @@ jobs:
       - run:
           name: Deploy to AWS 
           command: |
-            ssh-keygen -R $WEB_SERVER
-            ssh $WEB_USER@$WEB_SERVER bash deploy.sh
+            ssh -o StrictHostKeyChecking=accept-new $WEB_USER@$WEB_SERVER bash deploy.sh
 
 workflows:
   test_and_build_deploy:
