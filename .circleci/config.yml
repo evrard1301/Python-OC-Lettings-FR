@@ -4,15 +4,13 @@ jobs:
   build:
     docker:
       - image: alpine:3.15
-        auth:
-          username: user
-          password: azerty
     steps:
       - run:
           name: Build docker image
           command: |
             apk add docker
-            su -c "docker build . -t bog13/lettings"
+            addgroup $USER docker
+            docker build . -t bog13/lettings
   test:
     docker:
       - image: alpine:3.15
