@@ -18,3 +18,4 @@ run_docker_image:
 
 push_docker_image: build_docker_image
 	docker push bog13/lettings
+

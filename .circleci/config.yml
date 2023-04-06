@@ -38,7 +38,7 @@ jobs:
       - run:
           name: Deploy to AWS 
           command: |
-            echo "deploy"
+            sshpass -p $WEB_PASSWORD ssh $WEB_USER@$WEB_SERVER bash deploy.sh
 
 workflows:
   test_and_build_deploy:
