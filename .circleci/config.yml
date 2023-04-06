@@ -38,7 +38,7 @@ jobs:
       - run:
           name: Deploy to AWS 
           command: |
-            apt install -y sshpass
+            sudo apt install -y sshpass
             sshpass -p $WEB_PASSWORD ssh $WEB_USER@$WEB_SERVER bash deploy.sh
 
 workflows:
