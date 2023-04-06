@@ -7,22 +7,19 @@ jobs:
     steps:
       - run: 
         name: Test the app
-        command: |
-          echo "=> Test"
+        command: echo "=> Test"
   build:
     docker:
       - image: alpine:3.15
     steps:
       - run:
         name: Build docker image
-        command: |
-          echo "=> Build"
+        command: echo "=> Build"
   deploy:
     docker:
       - image: alpine:3.15
     steps:
       - run:
         name: Deploy to AWS
-        command: |
-          echo "=> Deploy"
+        command: echo "=> Deploy"
 
