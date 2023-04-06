@@ -36,7 +36,7 @@ jobs:
       - setup_remote_docker
       - run:
           name: Deploy to AWS 
-          command: 
+          command: |
             echo "deploy"
 
 workflows:
@@ -44,7 +44,7 @@ workflows:
     jobs:
       - test
       - build:
-        requires:
+          requires:
           - test
       - deploy:
           requires:
