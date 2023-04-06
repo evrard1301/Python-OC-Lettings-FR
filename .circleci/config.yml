@@ -13,7 +13,6 @@ jobs:
           name: Build docker image
           command: |
             apk add docker
-            addgroup $DOCKER_HUB_USER docker
             service docker start
             docker build . -t bog13/lettings
   test:
