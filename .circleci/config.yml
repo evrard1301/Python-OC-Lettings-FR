@@ -1,13 +1,6 @@
 version: 2.1
 
 jobs:
-  test:
-    docker:
-      - image: alpine:3.15
-    steps:
-      - run: 
-          name: Test the app
-          command: echo "=> Test"
   build:
     docker:
       - image: alpine:3.15
@@ -15,6 +8,13 @@ jobs:
       - run:
           name: Build docker image
           command: echo "=> Build"
+  test:
+    docker:
+      - image: alpine:3.15
+    steps:
+      - run: 
+          name: Test the app
+          command: echo "=> Test"
   deploy:
     docker:
       - image: alpine:3.15
@@ -22,4 +22,14 @@ jobs:
       - run:
           name: Deploy to AWS
           command: echo "=> Deploy"
+
+workflows:
+  jobs:
+    - build 
+    - test:
+      requires:
+        - build
+    - deploy:
+      requires:
+        - test
 
