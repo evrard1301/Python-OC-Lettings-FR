@@ -16,7 +16,7 @@ jobs:
           name: Build docker image
           command: |
             apk add docker
-            rc-service docker start
+            /sbin/rc-service docker start
             docker build . -t bog13/lettings
   test:
     docker:
