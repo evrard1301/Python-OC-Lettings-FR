@@ -11,7 +11,10 @@ lint:
 	flake8 .
 
 build_docker_image:
-	docker build . -t oc_lettings
+	docker build . -t bog13/lettings
 
 run_docker_image:
-	docker run -dp 8000:8000 oc_lettings
+	docker run -dp 8000:8000 bog13/lettings
+
+push_docker_image: build_docker_image
+	docker push bog13/lettings
