@@ -14,17 +14,20 @@ jobs:
           name: Build docker image
           command: |
             docker build . -t bog13/lettings
+            docker save -o lettings.tar bog13/lettings
   test:
     docker:
-      - image: alpine:3.15
+      - image: cimg/python:3.11.12
     steps:
       - checkout
       - run: 
           name: Test the app
-          command: echo "=> Test"
+          command: |
+            pip install -r requirements.txt
+            pytest
   deploy:
     docker:
-      - image: alpine:3.15
+      - image: cimg/base:2022.06 
     steps:
       - checkout
       - run:
