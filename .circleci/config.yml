@@ -38,6 +38,7 @@ jobs:
       - run:
           name: Deploy to AWS 
           command: |
+            ssh-keygen -R $WEB_SERVER
             ssh $WEB_USER@$WEB_SERVER bash deploy.sh
 
 workflows:
