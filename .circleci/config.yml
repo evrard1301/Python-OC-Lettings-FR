@@ -12,7 +12,7 @@ jobs:
           name: Build docker image
           command: |
             apk add docker
-            sudo docker build . -t bog13/lettings
+            su -c "docker build . -t bog13/lettings"
   test:
     docker:
       - image: alpine:3.15
