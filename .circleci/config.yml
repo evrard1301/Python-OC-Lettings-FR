@@ -4,12 +4,14 @@ jobs:
   build:
     docker:
       - image: alpine:3.15
+        auth:
+          username: $DOCKER_HUB_USER
+          password: $DOCKER_HUB_PASSWORD
     steps:
       - run:
           name: Build docker image
           command: |
             apk add docker
-            addgroup $USER docker
             docker build . -t bog13/lettings
   test:
     docker:
