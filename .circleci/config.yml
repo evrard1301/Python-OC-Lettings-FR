@@ -38,7 +38,7 @@ jobs:
       - run:
           name: Deploy to AWS 
           command: |
-            ssh -o StrictHostKeyChecking=accept-new $WEB_USER@$WEB_SERVER bash deploy.sh
+            ssh -o StrictHostKeyChecking=accept-new $WEB_USER@$WEB_SERVER bash deploy.sh "$CIRCLE_SHA1"
 
 workflows:
   test_and_build_deploy:
