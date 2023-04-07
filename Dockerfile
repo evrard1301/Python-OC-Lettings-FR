@@ -1,6 +1,7 @@
 FROM python
 
 ENV PYTHONUNBUFFERED=1
+
 WORKDIR build
 COPY . .
 
