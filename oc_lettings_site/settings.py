@@ -1,4 +1,23 @@
 import os
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+
+##########
+# Sentry #
+##########
+
+sentry_sdk.init(
+    dsn="https://fb625ea346f24b84bd0054d717bb20b1@o4504971832524800.ingest.sentry.io/4504971846549504",
+    integrations=[
+        DjangoIntegration()
+    ],
+    traces_sample_rate=1.0,
+    send_default_pii=True
+)
+
+##########
+# DJANGO #
+##########
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
