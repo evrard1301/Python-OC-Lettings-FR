@@ -1,6 +1,7 @@
 FROM python
 
 ENV PYTHONUNBUFFERED=1
+ENV DJANGO_SETTINGS_MODULE="oc_lettings_site.settings.production"
 
 WORKDIR build
 COPY . .
