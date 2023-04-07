@@ -3,7 +3,7 @@ from django.urls import path
 
 from . import views
 
-def trigger_error():
+def trigger_error(request):
     div_by_zero = 1/0
 
 urlpatterns = [
