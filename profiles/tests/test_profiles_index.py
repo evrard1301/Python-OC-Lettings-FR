@@ -9,7 +9,7 @@ def test_profiles_index__all_profiles(client, profile):
         profile('Claire', 'Cleron')
     ]
 
-    resp = client.get(reverse_lazy('profiles_index'))
+    resp = client.get(reverse_lazy('profiles:index'))
 
     assert 200 == resp.status_code
 

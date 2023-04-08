@@ -7,7 +7,7 @@ def test_profiles__ok(client, profile):
     profile('Alice', 'Angers')
     profile('Bob', 'Besancon')
 
-    resp = client.get(reverse_lazy('profile', kwargs={
+    resp = client.get(reverse_lazy('profiles:profile', kwargs={
         'username': 'Bob'
     }))
 

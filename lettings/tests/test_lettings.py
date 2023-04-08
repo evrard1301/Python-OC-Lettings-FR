@@ -8,7 +8,7 @@ def test_lettings__ok(client, address):
         address=address(89)
     )
 
-    resp = client.get(reverse_lazy('letting', kwargs={
+    resp = client.get(reverse_lazy('lettings:letting', kwargs={
         'letting_id': letting.id
     }))
 
