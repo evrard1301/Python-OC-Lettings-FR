@@ -1,6 +1,7 @@
 import pytest
 from django.test import Client
 from oc_lettings_site import models
+from lettings.models import Address
 from django.contrib.auth.models import User
 
 @pytest.fixture
@@ -9,7 +10,7 @@ def client(db):
 
 @pytest.fixture
 def address(db):
-    return lambda x: models.Address.objects.create(
+    return lambda x: Address.objects.create(
         number=x,
         street='Champs de l\'Essart',
         city='Audincourt',

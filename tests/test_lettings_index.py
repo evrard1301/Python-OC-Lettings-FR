@@ -1,6 +1,6 @@
 from tests.fixtures import *
 from django.urls import reverse_lazy
-from oc_lettings_site import models
+from lettings import models
 
 
 def test_lettings_index__reachable(client):
