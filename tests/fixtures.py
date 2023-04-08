@@ -1,6 +1,6 @@
 import pytest
 from django.test import Client
-from oc_lettings_site import models
+from profiles.models import Profile
 from lettings.models import Address
 from django.contrib.auth.models import User
 
@@ -28,7 +28,7 @@ def profile(db):
             last_name=name.upper(),
             email=f'{name.lower()}@email.com'
         )
-        return models.Profile.objects.create(
+        return Profile.objects.create(
             user=user, 
             favorite_city=city
         )
