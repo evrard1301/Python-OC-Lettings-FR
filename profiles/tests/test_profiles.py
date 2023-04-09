@@ -1,6 +1,5 @@
 from tests.fixtures import *
 from django.urls import reverse_lazy
-from oc_lettings_site import models
 
 
 def test_profiles__ok(client, profile):
