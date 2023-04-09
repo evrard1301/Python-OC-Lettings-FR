@@ -9,12 +9,12 @@ def test_lettings_index__reachable(client):
     assert b'<h1>Lettings</h1>' in resp.content
 
 
-def test_lettings_index__all_lettings(client, address): 
+def test_lettings_index__all_lettings(client, address):
     models.Letting.objects.create(
         title='first house',
         address=address(1)
     )
-    
+
     models.Letting.objects.create(
         title='second house',
         address=address(2)
@@ -27,4 +27,3 @@ def test_lettings_index__all_lettings(client, address):
 
     for letting in lettings:
         assert letting.title in resp.content.decode()
-    

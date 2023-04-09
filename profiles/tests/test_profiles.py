@@ -12,7 +12,7 @@ def test_profiles__ok(client, profile):
     }))
 
     assert 200 == resp.status_code
-    
+
     content = resp.content.decode()
     must_be_presents = [
         'First name: bob',
@@ -23,5 +23,3 @@ def test_profiles__ok(client, profile):
 
     for txt in must_be_presents:
         assert txt in content
-
-

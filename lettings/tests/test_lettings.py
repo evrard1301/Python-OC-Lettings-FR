@@ -2,6 +2,7 @@ from tests.fixtures import *
 from django.urls import reverse_lazy
 from lettings import models
 
+
 def test_lettings__ok(client, address):
     letting = models.Letting.objects.create(
         title='my letting',

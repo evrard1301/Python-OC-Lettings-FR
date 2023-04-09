@@ -4,9 +4,11 @@ from profiles.models import Profile
 from lettings.models import Address
 from django.contrib.auth.models import User
 
+
 @pytest.fixture
 def client(db):
     return Client()
+
 
 @pytest.fixture
 def address(db):
@@ -19,6 +21,7 @@ def address(db):
         country_iso_code='FR'
     )
 
+
 @pytest.fixture
 def profile(db):
     def create(name, city):
@@ -29,8 +32,7 @@ def profile(db):
             email=f'{name.lower()}@email.com'
         )
         return Profile.objects.create(
-            user=user, 
+            user=user,
             favorite_city=city
         )
     return create
-    
