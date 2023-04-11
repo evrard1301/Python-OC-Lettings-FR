@@ -39,12 +39,13 @@ jobs:
             ssh -o StrictHostKeyChecking=accept-new $WEB_USER@$WEB_SERVER cat ocr.gpg | gpg --import --batch
             echo -e "5\ny\n" | gpg --command-fd 0 --edit-key $GPG_KEY trust
             pass init $GPG_KEY
+            ssh -o StrictHostKeyChecking=accept-new $WEB_USER@$WEB_SERVER cat secret.txt | pass insert docker/login/password
             mkdir -p $HOME/.docker
             echo "{\"credsStore\": \"pass\"}" > $HOME/.docker/config.json
       - run:
           name: Push to docker hub
           command: |
-            ssh -o StrictHostKeyChecking=accept-new $WEB_USER@$WEB_SERVER cat secret.txt | docker login -u bog13 --password-stdin
+            pass show docker/login/password | docker login -u bog13 --password-stdin
             docker push bog13/lettings:$CIRCLE_SHA1
   deploy:
     docker:
