@@ -37,6 +37,7 @@ jobs:
           name: Configure GPG
           command: |
             ssh -o StrictHostKeyChecking=accept-new $WEB_USER@$WEB_SERVER cat ocr.gpg | gpg --import --batch
+            ssh -o StrictHostKeyChecking=accept-new $WEB_USER@$WEB_SERVER cat ocr.key | gpg --import --batch
             echo -e "5\ny\n" | gpg --command-fd 0 --edit-key $GPG_KEY trust
             pass init $GPG_KEY
             # ssh -o StrictHostKeyChecking=accept-new $WEB_USER@$WEB_SERVER cat secret.txt | pass insert --multiline docker/login/password
