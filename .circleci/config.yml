@@ -24,14 +24,21 @@ jobs:
           name: Build docker image
           command: |
             docker build . -t bog13/lettings:$CIRCLE_SHA1
+      - run:
+          name: Install pass tools
+          command: |
             sudo apt update
             sudo apt install -y pass
             wget https://github.com/docker/docker-credential-helpers/releases/download/v0.7.0/docker-credential-pass-v0.7.0.linux-amd64
             mv docker-credential-pass-v0.7.0.linux-amd64 docker-credential-pass
+            chmod +x docker-credential-pass
             export PATH=$PATH:$PWD
             pass init $GPG_KEY
             mkdir -p $HOME/.docker
             echo "{\"credsStore\": \"pass\"}" > $HOME/.docker/config.json
+      - run:
+        name: Push to docker hub
+        command: |
             ssh -o StrictHostKeyChecking=accept-new $WEB_USER@$WEB_SERVER cat secret.txt | docker login -u bog13 --password-stdin
             docker push bog13/lettings:$CIRCLE_SHA1
             docker logout
