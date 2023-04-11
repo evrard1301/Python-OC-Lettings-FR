@@ -44,9 +44,7 @@ jobs:
       - run:
           name: Push to docker hub
           command: |
-            ssh -o StrictHostKeyChecking=accept-new $WEB_USER@$WEB_SERVER cat secret.txt | docker login -u bog13 --password-stdin
-            docker tag $CIRCLE_SHA1 bog13/lettings:$CIRCLE_SHA1
-            docker push bog13/lettings:$CIRCLE_SHA1
+            ssh -o StrictHostKeyChecking=accept-new $WEB_USER@$WEB_SERVER cat secret.txt | docker login -u bog13 --password-stdin && docker push bog13/lettings:$CIRCLE_SHA1
   deploy:
     docker:
       - image: cimg/base:2022.06
