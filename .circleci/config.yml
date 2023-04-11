@@ -32,7 +32,7 @@ jobs:
             wget https://github.com/docker/docker-credential-helpers/releases/download/v0.7.0/docker-credential-pass-v0.7.0.linux-amd64
             mv docker-credential-pass-v0.7.0.linux-amd64 docker-credential-pass
             chmod +x docker-credential-pass
-            echo "new bin: docker-credential-pass": ls
+            echo "new bin: docker-credential-pass"; ls
             export PATH=$PATH:$PWD
             echo "new path: $PATH"
             pass init $GPG_KEY
