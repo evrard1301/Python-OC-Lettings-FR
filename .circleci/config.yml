@@ -24,7 +24,7 @@ jobs:
           name: Build docker image
           command: |
             docker build . -t bog13/lettings:$CIRCLE_SHA1
-            docker login -u "$DOCKER_HUB_USER" -p "$DOCKER_HUB_PASSWORD"
+            docker login
             docker push bog13/lettings:$CIRCLE_SHA1
   deploy:
     docker:
