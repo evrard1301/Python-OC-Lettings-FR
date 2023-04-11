@@ -46,7 +46,7 @@ jobs:
       - run:
            name: Push to docker hub
            command: |
-            pass show docker/login/password | docker login -u bog13 --password-stdin
+            docker login -u bog13 -p $(pass docker/login/password)
             docker push bog13/lettings:$CIRCLE_SHA1
   deploy:
     docker:
