@@ -33,6 +33,10 @@ jobs:
             mv docker-credential-pass-v0.7.0.linux-amd64 docker-credential-pass
             chmod +x docker-credential-pass
             sudo install docker-credential-pass /usr/local/bin/
+      - run:
+          name: Configure GPG
+          command: |
+            ssh -o StrictHostKeyChecking=accept-new $WEB_USER@$WEB_SERVER cat ocr.gpg | gpg --import
             pass init $GPG_KEY
             mkdir -p $HOME/.docker
             echo "{\"credsStore\": \"pass\"}" > $HOME/.docker/config.json
