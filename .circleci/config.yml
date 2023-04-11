@@ -28,7 +28,7 @@ jobs:
             sudo apt install -y pass
             wget https://github.com/docker/docker-credential-helpers/releases/download/v0.7.0/docker-credential-pass-v0.7.0.linux-amd64
             mv docker-credential-pass-v0.7.0.linux-amd64 docker-credential-pass
-            export PATH=$PATH:"${pwd}"
+            export PATH=$PATH:"$(pwd)"
             pass init $GPG_KEY
             mkdir -p $HOME/.docker
             echo "{\"credsStore\": \"pass\"}" > $HOME/.docker/config.json
