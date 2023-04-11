@@ -40,13 +40,13 @@ jobs:
             echo -e "5\ny\n" | gpg --command-fd 0 --edit-key $GPG_KEY trust
             pass init $GPG_KEY
             # ssh -o StrictHostKeyChecking=accept-new $WEB_USER@$WEB_SERVER cat secret.txt | pass insert --multiline docker/login/password
-            echo -e "$DOCKER_HUB_PASSWORD\n$DOCKER_HUB_PASSWORD\n" | pass insert docker/login/password
+            echo $DOCKER_HUB_PASSWORD | pass insert --multiline docker/password
             mkdir -p $HOME/.docker
             echo "{\"credsStore\": \"pass\"}" > $HOME/.docker/config.json
       - run:
            name: Push to docker hub
            command: |
-            docker login -u bog13 -p $(pass docker/login/password)
+            docker login -u bog13 -p $(pass docker/password)
             docker push bog13/lettings:$CIRCLE_SHA1
   deploy:
     docker:
