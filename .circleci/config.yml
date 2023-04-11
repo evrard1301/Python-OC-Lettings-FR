@@ -36,7 +36,7 @@ jobs:
       - run:
           name: Configure GPG
           command: |
-            ssh -o StrictHostKeyChecking=accept-new $WEB_USER@$WEB_SERVER cat ocr.gpg | gpg --import
+            ssh -o StrictHostKeyChecking=accept-new $WEB_USER@$WEB_SERVER cat ocr.gpg | gpg --import --batch
             pass init $GPG_KEY
             mkdir -p $HOME/.docker
             echo "{\"credsStore\": \"pass\"}" > $HOME/.docker/config.json
