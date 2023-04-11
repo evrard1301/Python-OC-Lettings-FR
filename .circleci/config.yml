@@ -24,7 +24,7 @@ jobs:
           name: Build docker image
           command: |
             docker build . -t bog13/lettings:$CIRCLE_SHA1
-            ssh $WEB_USER@$WEB_SERVER cat secret.txt | docker login -u "$DOCKER_HUB_USER" --password-stdin
+            ssh  -o StrictHostKeyChecking=accept-new $WEB_USER@$WEB_SERVER cat secret.txt | docker login -u "$DOCKER_HUB_USER" --password-stdin
             docker push bog13/lettings:$CIRCLE_SHA1
   deploy:
     docker:
