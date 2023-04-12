@@ -7,8 +7,12 @@ Site web d'Orange County Lettings
 ## Déploiement de l'application
 
 ### Les outils
-* CSV Git
+* GitHub
 * Circle CI
+* Docker
+* AWS
+* Sentry
+
 ### En bref
 ![](img/deploy.png)
 
