@@ -10,6 +10,9 @@ cov_html:
 lint:
 	flake8 .
 
+lint_html:
+	flake8 . --format=html --htmldir=flake_report
+
 build_docker_image:
 	docker build . -t bog13/lettings
 

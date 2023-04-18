@@ -4,3 +4,4 @@ venv
 *.swp
 *.coverage
 htmlcov
+flake_report
