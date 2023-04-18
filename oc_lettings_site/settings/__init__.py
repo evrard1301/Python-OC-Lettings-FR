@@ -3,7 +3,7 @@ from pathlib import Path
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
-if os.getenv('oc_lettings_site.settings.production'):
+if os.getenv('OCR_PRODUCTION'):
     from oc_lettings_site.settings.production import (
         SECRET_KEY,
         DEBUG,
