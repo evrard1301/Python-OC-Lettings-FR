@@ -8,7 +8,7 @@ cov_html:
 	pytest --cov=. --cov-report=html
 
 lint:
-	flake8 --ignore=F401,F403 .
+	flake8 .
 
 build_docker_image:
 	docker build . -t bog13/lettings
